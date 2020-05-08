@@ -2,7 +2,7 @@
 
 ## Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/HarukaNetwork/HarukaAya)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/renvenous/skyleebot)
 
 A modular telegram Python bot running on python3 with an sqlalchemy database.
 
