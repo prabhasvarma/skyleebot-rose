@@ -1,6 +1,6 @@
 {
-  "name": "Haruka Aya Clone",
-  "description": "Telegram's Best group manager. Modular Telegram group management bot!",
+  "name": "Wolverine",
+  "description": "Telegram's sassiest group manager. Modular Telegram group management bot!",
   "keywords": [
     "telegram",
     "best",
@@ -8,10 +8,10 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/starry69/skyleebot"
+  "repository": "https://github.com/starry69/skyleebot",
   "env": {
     "ENV": {
-      "description": "Setting this to ANYTHING will enable env variables",
+      "description": "Setting this to ANYTHING will enable env variables. But, you need to understand the code to know what to set here!",
       "value": "ANYTHING"
     },
     "TOKEN": {
@@ -20,11 +20,11 @@
     },
     "OWNER_ID": {
       "description": "An integer of consisting of your owner ID",
-      "value": "1116223246"
+      "value": "680915808"
     },
     "OWNER_USERNAME": {
       "description": "Your username",
-      "value": "CRAZYHAX"
+      "value": "Nitin181"
     },
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode messages",
@@ -36,23 +36,28 @@
     },
     "MESSAGE_DUMP": {
       "description": "optional: a chat where your replied saved messages are stored, to stop people deleting their old",
-      "value": "-349749825"
+      "value": "",
+      "required": false
     },
     "SUDO_USERS": {
       "description": "A space separated list of user_ids which should be considered sudo users",
-      "value": "686021814"
+      "value": "ID OF SUDOS"
     },
     "SUPPORT_USERS": {
       "description": "A space separated list of user_ids which should be considered support users (can gban/ungban, nothing else)",
-      "value": "686021814"
+      "value": "same as SUDO var"
     },
     "WHITELIST_USERS": {
       "description": "A space separated list of user_ids which should be considered whitelisted - they can't be banned.",
-      "value": "686021814"
+      "value": "same"
+    },
+    "DONATION_LINK": {
+      "description": "Optional: link where you would like to receive donations.",
+      "value": "null: 0"
     },
     "PORT": {
       "description": "Port to use for your webhooks",
-      "value": "5000"
+      "value": "8443"
     },
     "DEL_CMDS": {
       "description": "Whether to delete commands from users which don't have rights to use that command",
@@ -68,7 +73,8 @@
     },
     "BAN_STICKER": {
       "description": "Which sticker to use when banning people. Use https://telegram.dog/ShowJsonBot to get the file_id",
-      "value": "CAADBQADfgADttzjKJWTC3CM9l78FgQ"
+      "value": "CAACAgUAAx0CV2hGhQACCS1ebdcLvsvI89uF3ttEWaR\_M88MBQACTQEAAupFXico2ds1vUzopRgE",
+      "required": true
     }
   },
   "addons": [
@@ -80,3 +86,15 @@
     }
   ]
 }
+
+
+
+
+
+
+
+
+
+
+
+
