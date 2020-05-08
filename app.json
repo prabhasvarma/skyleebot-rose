@@ -1,5 +1,6 @@
+
 {
-  "name": "Wolverine",
+  "name": "Heroku",
   "description": "Telegram's sassiest group manager. Modular Telegram group management bot!",
   "keywords": [
     "telegram",
@@ -8,10 +9,10 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/starry69/skyleebot",
+  "repository": "https://github.com/renvenous/skyleebot.git",
   "env": {
     "ENV": {
-      "description": "Setting this to ANYTHING will enable env variables. But, you need to understand the code to know what to set here!",
+      "description": "Setting this to ANYTHING will enable env variables",
       "value": "ANYTHING"
     },
     "TOKEN": {
@@ -20,44 +21,43 @@
     },
     "OWNER_ID": {
       "description": "An integer of consisting of your owner ID",
-      "value": "680915808"
+      "value": "1115280928"
     },
     "OWNER_USERNAME": {
       "description": "Your username",
-      "value": "Nitin181"
+      "value": "REST_IN_PISS"
     },
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode messages",
-      "value": "ANYTHING"
+      "value": "False"
     },
     "URL": {
       "description": "The Heroku App URL similar to https://<appname>.herokuapp.com/",
-      "value": ""
+      "value": "None"
     },
     "MESSAGE_DUMP": {
       "description": "optional: a chat where your replied saved messages are stored, to stop people deleting their old",
-      "value": "",
-      "required": false
+      "value": "None"
     },
     "SUDO_USERS": {
       "description": "A space separated list of user_ids which should be considered sudo users",
-      "value": "ID OF SUDOS"
+      "value": "254318997 683538773 570400686 466337795"
     },
     "SUPPORT_USERS": {
       "description": "A space separated list of user_ids which should be considered support users (can gban/ungban, nothing else)",
-      "value": "same as SUDO var"
+      "value": "254318997 683538773 570400686 466337795"
     },
     "WHITELIST_USERS": {
       "description": "A space separated list of user_ids which should be considered whitelisted - they can't be banned.",
-      "value": "same"
+      "value": "254318997 683538773 570400686 466337795"
     },
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations.",
-      "value": "null: 0"
+      "value": "https://www.paypal.me/Your_id_here"
     },
     "PORT": {
       "description": "Port to use for your webhooks",
-      "value": "8443"
+      "value": "5000"
     },
     "DEL_CMDS": {
       "description": "Whether to delete commands from users which don't have rights to use that command",
@@ -73,8 +73,20 @@
     },
     "BAN_STICKER": {
       "description": "Which sticker to use when banning people. Use https://telegram.dog/ShowJsonBot to get the file_id",
-      "value": "CAACAgUAAx0CV2hGhQACCS1ebdcLvsvI89uF3ttEWaR\_M88MBQACTQEAAupFXico2ds1vUzopRgE",
-      "required": true
+      "value": "CAADBAAD6AMAAkJ_EQNu_RjOszbmnxYE"
+    },
+    "API_KEY": {
+      "description": "YOUR KEY HERE.",
+      "value": ""
+    },
+    "NO_LOAD": {
+      "description": "No Load Modules.",
+      "value": "['translation', 'sed']"
+    },
+    "SQLALCHEMY_DATABASE_URI": {
+      "description": "db.",
+      "value": "sqldbtype://username:pw@hostname:port/db_name"
+      
     }
   },
   "addons": [
@@ -86,15 +98,3 @@
     }
   ]
 }
-
-
-
-
-
-
-
-
-
-
-
-
