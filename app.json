@@ -8,7 +8,7 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/renvenous/skyleebot"
+  "repository": "https://github.com/starry69/skyleebot"
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
