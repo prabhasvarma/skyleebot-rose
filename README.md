@@ -4,6 +4,7 @@
 
 A modular telegram Python bot running on python3 with an sqlalchemy database.
 
+![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 Originally a simple group management bot with multiple admin features, it has evolved, becoming extremely modular and 
 simple to use. Note that this project uses well-known Telegram-bot of it's time @BanhammerMarie_bot from Paul Larson as it's base.
 
