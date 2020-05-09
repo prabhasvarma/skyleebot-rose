@@ -19,11 +19,12 @@ from skylee.modules.helper_funcs.alternate import typing_action
 @run_async
 @typing_action
 def ping(update, context):
-    reply_msg = ("PONG!!\n"
-                 "<b>Time Taken:</b> <code>{}</code>\n"
-                 "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime))
-
-    update.effective_message.reply_text(reply_msg, parse_mode=ParseMode.HTML)
+	start_time = time.time()
+	test = send_message(update.effective_message, "Pong!")
+	end_time = time.time()
+	ping_time = float(end_time - start_time)
+	context.bot.editMessageText(chat_id=update.effective_chat.id, message_id=test.message_id,
+						text=tl(update.effective_message, "Pong!\nKecepatannya: {0:.2f} detik").format(round(ping_time, 2) % 60))
 
 #Kanged from PaperPlane Extended userbot
 def speed_convert(size):
