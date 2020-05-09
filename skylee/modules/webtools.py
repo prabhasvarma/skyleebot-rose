@@ -9,7 +9,6 @@ from telegram import __version__
 from spamwatch import __version__ as __sw__
 from pythonping import ping as ping3
 from telegram import Message, Chat, Update, Bot, MessageEntity
-from telethon import events
 from datetime import datetime
 from telegram import ParseMode
 from telegram.ext import CommandHandler, run_async, Filters
