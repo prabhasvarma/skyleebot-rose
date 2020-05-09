@@ -5,7 +5,6 @@ import requests
 from telegram import Bot, Update, ParseMode
 from telegram.ext import run_async
 
-from skylee import dispatcher, StartTime
 from skylee.modules.disable import DisableAbleCommandHandler
 
 sites_list = {
