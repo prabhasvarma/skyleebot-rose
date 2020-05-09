@@ -128,7 +128,7 @@ SUDO_USERS.add(OWNER_ID)
 
 # SpamWatch
 
-sw_token = Config.SPAMWATCH_API
+sw_token = 2AKXbPPYIpFGHrRK8mYDiQxOPEnWZanSV4KmIVMd6YwN6U2ZqWC_788vfSq2ANT9
 if sw_token == None:
     spamwtc = None
     LOGGER.warning("Invalid spamwatch api")
