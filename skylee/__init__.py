@@ -126,6 +126,15 @@ else:
 
 SUDO_USERS.add(OWNER_ID)
 
+# SpamWatch
+
+sw_token = Config['SPAMWATCH_API]
+if sw_token == None:
+    spamwtc = None
+    LOGGER.warning("Invalid spamwatch api")
+else:
+    spamwtc = spamwatch.Client(sw_token)
+
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 
