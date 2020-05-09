@@ -70,7 +70,8 @@ if ENV:
     CUSTOM_CMD = os.environ.get('CUSTOM_CMD', False)
     API_WEATHER = os.environ.get('API_OPENWEATHER', None)
     WALL_API = os.environ.get('WALL_API', None)
-
+    SPAMWATCH_TOKEN = os.environ.get('SPAMWATCH_API', None)
+    
 else:
     from skylee.config import Development as Config
     TOKEN = Config.API_KEY
@@ -122,6 +123,7 @@ else:
     CUSTOM_CMD = Config.CUSTOM_CMD
     API_WEATHER = Config.API_OPENWEATHER
     WALL_API = Config.WALL_API
+    SPAMWATCH_API = Config.SPAMWATCH_API
 
 
 SUDO_USERS.add(OWNER_ID)
