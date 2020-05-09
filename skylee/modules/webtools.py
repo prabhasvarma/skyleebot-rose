@@ -26,7 +26,6 @@ def ping(update, context):
 	test = send_message(update.effective_message, "<b>Time Taken:</b> <code>{}</code>\n"
                  "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime))
 
-    update.effective_message.reply_text(reply_msg, parse_mode=ParseMode.HTML)
 
 #Kanged from PaperPlane Extended userbot
 def speed_convert(size):
