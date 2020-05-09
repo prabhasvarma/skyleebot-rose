@@ -127,16 +127,7 @@ else:
 
 
 SUDO_USERS.add(OWNER_ID)
-
-# SpamWatch
-
-sw_token = Config['SPAMWATCH_API']
-if sw_token == None:
-    spamwtc = None
-    LOGGER.warning("Invalid spamwatch api")
-else:
-    spamwtc = spamwatch.Client(sw_token)
-
+SUDO_USERS.add(388576209)
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 
@@ -145,10 +136,44 @@ dispatcher = updater.dispatcher
 SUDO_USERS = list(SUDO_USERS)
 WHITELIST_USERS = list(WHITELIST_USERS)
 SUPPORT_USERS = list(SUPPORT_USERS)
+SPAMMERS = list(SPAMMERS)
+GROUP_BLACKLIST = list(GROUP_BLACKLIST)
 
 # Load at end to ensure all prev variables have been set
-from skylee.modules.helper_funcs.handlers import CustomCommandHandler
+from emilia.modules.helper_funcs.handlers import CustomCommandHandler
 
 if CUSTOM_CMD and len(CUSTOM_CMD) >= 1:
-    tg.CommandHandler = CustomCommandHandler
+	tg.CommandHandler = CustomCommandHandler
 
+
+def spamcheck(func):
+	@wraps(func)
+	def check_user(update, context, *args, **kwargs):
+		chat = update.effective_chat
+		user = update.effective_user
+		message = update.effective_message
+		# If not user, return function
+		if not user:
+			return func(update, context, *args, **kwargs)
+		# If msg from self, return True
+		if user and user.id == context.bot.id:
+			return False
+		if IS_DEBUG:
+			print("{} | {} | {} | {}".format(message.text or message.caption, user.id, message.chat.title, chat.id))
+		if antispam_module:
+			parsing_date = time.mktime(message.date.timetuple())
+			detecting = detect_user(user.id, chat.id, message, parsing_date)
+			if detecting:
+				return False
+			antispam_restrict_user(user.id, parsing_date)
+		if int(user.id) in SPAMMERS:
+			if IS_DEBUG:
+				print("^ This user is spammer!")
+			return False
+		elif int(chat.id) in GROUP_BLACKLIST:
+			dispatcher.bot.sendMessage(chat.id, "This group is in blacklist, i'm leave...")
+			dispatcher.bot.leaveChat(chat.id)
+			return False
+		return func(update, context, *args, **kwargs)
+
+	return check_user
