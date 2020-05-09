@@ -18,10 +18,7 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 @run_async
 @typing_action
-def ping(bot: Bot, update: Update):
-    telegram_ping = ping_func(["Telegram"])[0].split(": ", 1)[1]
-    uptime = get_readable_time((time.time() - StartTime))
-
+def ping(update, context):
     reply_msg = ("PONG!!\n"
                  "<b>Time Taken:</b> <code>{}</code>\n"
                  "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime))
