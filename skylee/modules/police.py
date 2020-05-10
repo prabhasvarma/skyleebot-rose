@@ -42,6 +42,5 @@ POLICE_HANDLER = DisableAbleCommandHandler("police", police)
 
 dispatcher.add_handler(POLICE_HANDLER)
 
-__mod_name__ = "POLICE"
 __command_list__ = ["police"]
 __handlers__ = [POLICE_HANDLER]
