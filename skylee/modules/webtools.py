@@ -2,6 +2,7 @@ import speedtest
 import requests
 import datetime
 import platform
+import time
 
 from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
 from platform import python_version
@@ -20,10 +21,11 @@ from skylee.modules.helper_funcs.alternate import typing_action
 @typing_action
 def ping(update, context):
     start_time = time.time()
-    requests.get('https://api.telegram.org')
+    test = send_message(update.effective_message, "Pong!")
     end_time = time.time()
-    ms = float(end_time - start_time)
-    update.effective_message.reply_text("馃彄 Pong!\n鈴憋笍Reply took: {0:.2f}s".format(round(ms, 2) % 60), parse_mode=ParseMode.MARKDOWN)
+    ping_time = float(end_time - start_time)
+    context.bot.editMessageText(chat_id=update.effective_chat.id, message_id=test.message_id,
+                        text=tl(update.effective_message, "Pong!\nSpeed was: {0:.2f}s").format(round(ping_time, 2) % 60))
 
 #Kanged from PaperPlane Extended userbot
 def speed_convert(size):
