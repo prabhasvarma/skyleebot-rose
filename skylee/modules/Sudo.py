@@ -13,7 +13,7 @@ from skylee.modules.helper_funcs.chat_status import bot_admin
 
 @bot_admin
 @run_async
-def addsudo(update, context):
+def addsudo(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
     banner = update.effective_user
     user_id = extract_user(message, args)
@@ -40,7 +40,7 @@ def addsudo(update, context):
 
 @bot_admin
 @run_async
-def rsudo(update, context):
+def rsudo(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message
     user_id = extract_user(message, args)
     
