@@ -2,7 +2,6 @@ import speedtest
 import requests
 import datetime
 import platform
-import time
 
 from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
 from platform import python_version
@@ -15,20 +14,21 @@ from telegram.ext import CommandHandler, run_async, Filters
 from skylee import dispatcher, OWNER_ID
 from skylee.modules.helper_funcs.filters import CustomFilters
 from skylee.modules.helper_funcs.alternate import typing_action
-from skylee.modules.helper_funcs.alternate import send_message
 
 
 @run_async
 @typing_action
 def ping(update, context):
-    telegram_ping = ping_func(["Telegram"])[0].split(": ", 1)[1]
-    uptime = get_readable_time((time.time() - StartTime))
-
-    reply_msg = ("PONG!!\n"
-                 "<b>Time Taken:</b> <code>{}</code>\n"
-                 "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime))
-
-    update.effective_message.reply_text(reply_msg, parse_mode=ParseMode.HTML)
+    tg_api = ping3('api.telegram.org', count=4)
+    google = ping3('google.com', count=4)
+    text = "*Pong!*\n"
+    text += "Average speed to Telegram bot API server - `{}` ms\n".format(tg_api.rtt_avg_ms)
+    if google.rtt_avg:
+        gspeed = google.rtt_avg
+    else:
+        gspeed = google.rtt_avg
+    text += "Average speed to Google - `{}` ms".format(gspeed)
+    update.effective_message.reply_text(text, parse_mode=ParseMode.MARKDOWN)
 
 #Kanged from PaperPlane Extended userbot
 def speed_convert(size):
