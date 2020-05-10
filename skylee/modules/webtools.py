@@ -23,7 +23,7 @@ from skylee.modules.helper_funcs.alternate import send_message
 @typing_action
 def ping(update, context):
     start_time = time.time()
-    test = send_message(update.effective_message, "Pong!")
+    test = send_message(update.effective_message, "Pong!\nSpeed was: {0:.2f}s").format(round(ping_time, 2) % 60))
     end_time = time.time()
     ping_time = float(end_time - start_time)
     context.bot.editMessageText(chat_id=update.effective_chat.id, message_id=test.message_id,
