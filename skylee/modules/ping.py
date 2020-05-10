@@ -2,7 +2,7 @@ import html
 import json
 import random
 import time
-from pyowm import timeutils, exceptions
+
 from datetime import datetime
 from typing import Optional, List
 
