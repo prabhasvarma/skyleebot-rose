@@ -19,16 +19,11 @@ from skylee.modules.helper_funcs.alternate import typing_action
 @run_async
 @typing_action
 def ping(update, context):
-    tg_api = ping3('api.telegram.org', count=4)
-    google = ping3('google.com', count=4)
-    text = "*Pong!*\n"
-    text += "Average speed to Telegram bot API server - `{}` ms\n".format(tg_api.rtt_avg_ms)
-    if google.rtt_avg:
-        gspeed = google.rtt_avg
-    else:
-        gspeed = google.rtt_avg
-    text += "Average speed to Google - `{}` ms".format(gspeed)
-    update.effective_message.reply_text(text, parse_mode=ParseMode.MARKDOWN)
+    start_time = time.time()
+    requests.get('https://api.telegram.org')
+    end_time = time.time()
+    ms = float(end_time - start_time)
+    update.effective_message.reply_text("馃彄 Pong!\n鈴憋笍Reply took: {0:.2f}s".format(round(ms, 2) % 60), parse_mode=ParseMode.MARKDOWN)
 
 #Kanged from PaperPlane Extended userbot
 def speed_convert(size):
