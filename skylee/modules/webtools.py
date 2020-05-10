@@ -15,6 +15,7 @@ from telegram.ext import CommandHandler, run_async, Filters
 from skylee import dispatcher, OWNER_ID
 from skylee.modules.helper_funcs.filters import CustomFilters
 from skylee.modules.helper_funcs.alternate import typing_action
+from skylee.modules.helper_funcs.alternate import send_message
 
 
 @run_async
