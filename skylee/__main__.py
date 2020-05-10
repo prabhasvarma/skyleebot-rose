@@ -23,11 +23,13 @@ from skylee.modules.helper_funcs.alternate import typing_action
 PM_START_TEXT = f"""
 Hey there! my name is *{dispatcher.bot.first_name}*. If you have any questions on how to use me, Click Help button.
 
-I'm a group management bot built in python3, using the \
-python-telegram-bot library, and am fully opensource - you can find what makes me tick \
-[here](www.github.com/starry69/skyleebot).
+Click Help button to find out more about how to use me to my full potential.
 
-Wanna Add me to your Group? Just click the button below!
+Join SuperMairo Group [SuperMarioSupport](http://t.me/SupermarioSupport) ( @SuperMairoUpdates ) if you need any support or help.
+
+Made with love by [KR$NA](http://t.me/SeedhaMaut), [ﾚの刀乇 Wのﾚｷ](http://t.me/SeedhaMaut)
+
+Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_ProBot?startgroup=true)
 """
 
 buttons = [[
@@ -44,10 +46,10 @@ I'm a modular group management bot with a few fun extras! Have a look at the fol
 the things I can help you with.
 
 *Main* commands available:
- × /start: Starts the bot
- × /help: PM's you this message.
- × /help <module name>: PM's you info about that module.
- × /settings: in PM: will send you your settings for all supported modules.
+ - /start: Starts the bot
+ - /help: PM's you this message.
+ - /help <module name>: PM's you info about that module.
+ - /settings: in PM: will send you your settings for all supported modules.
    - in a group: will redirect you to pm, with all that chat's settings.
  \nClick on the buttons below to get documentation about specific modules!"""
 
