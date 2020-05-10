@@ -26,7 +26,7 @@ def ping(update, context):
     end_time = time.time()
     ping_time = float(end_time - start_time)
     context.bot.editMessageText(chat_id=update.effective_chat.id, message_id=test.message_id,
-                        text=tl(update.effective_message, "Pong!\nSpeed was: {0:.2f}s").format(round(ping_time, 2) % 60))
+                        text = send_message(update.effective_message, "Pong!\nSpeed was: {0:.2f}s").format(round(ping_time, 2) % 60))
 
 #Kanged from PaperPlane Extended userbot
 def speed_convert(size):
