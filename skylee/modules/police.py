@@ -25,7 +25,7 @@ police_siren = [
 
 @user_admin
 @run_async
-def police(bot: Bot, update: Update):
+def police(update, context):
     msg = update.effective_message.reply_text('Police is coming!') 
     for x in range(EDIT_TIMES):
         msg.edit_text(police_siren[x%2])
