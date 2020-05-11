@@ -147,7 +147,7 @@ def start(update, context):
         else:
             update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
-        update.effective_message.reply_text("Excuse me, is your name {}? Because you look like a hot-tea!").format(update.effective_user.first_name))
+        update.effective_message.reply_text("Excuse me, is your name {}? Because you look like a hot-tea!".format(mention_html(user_chat.id, user_chat.first_name)),
 
 
 # for test purposes
