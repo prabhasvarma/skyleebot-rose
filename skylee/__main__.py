@@ -32,14 +32,6 @@ Made with love by [KR$NA](http://t.me/SeedhaMaut), [ﾚの刀乇 Wのﾚｷ](htt
 Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_ProBot?startgroup=true)
 """
 
-buttons = [[
-InlineKeyboardButton(text="Add to Group 👥", url="t.me/skylee_bot?startgroup=true")]]
-InlineKeyboardButton(text="Updates 📢", url="https://t.me/skyleeupdates")
-                  ]]
-
-buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
-
-
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
@@ -124,28 +116,53 @@ def test(update, context):
 
 @run_async
 def start(update, context):
+    LOGGER.info("Start")
+    chat = update.effective_chat  # type: Optional[Chat]
+    #query = update.callback_query #Unused variable
     if update.effective_chat.type == "private":
-        args = context.args
         if len(args) >= 1:
             if args[0].lower() == "help":
-                send_help(update.effective_chat.id, HELP_STRINGS)
+                send_help(update.effective_chat.id, tld(chat.id, "send-help").format(
+                     dispatcher.bot.first_name, "" if not ALLOW_EXCL else tld(
+                         chat.id, "\nAll commands can either be used with `/` or `!`.\n"
+                             )))
 
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
 
                 if is_user_admin(chat, update.effective_user.id):
-                    send_settings(match.group(1), update.effective_user.id, False)
+                    send_settings(match.group(1), update.effective_user.id, update, user=False)
                 else:
-                    send_settings(match.group(1), update.effective_user.id, True)
+                    send_settings(match.group(1), update.effective_user.id, update, user=True)
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
+            elif args[0].lower() == "controlpanel":
+                control_panel(bot, update)
         else:
-            update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+            send_start(bot, update)
     else:
-        update.effective_message.reply_text("Sending you a warm hi & wishing your day is a happy one!")
+        update.effective_message.reply_text("Hi, Cutie Pie I'm Alive ! PM me if you have any questions about Elisa :)")
+
+def send_start(bot, update):
+    #Try to remove old message
+    try:
+        query = update.callback_query
+        query.message.delete()
+    except:
+        pass
+
+    chat = update.effective_chat  # type: Optional[Chat]
+    first_name = update.effective_user.first_name 
+    text = PM_START_TEXT
+
+    keyboard = [[InlineKeyboardButton(text="🎉 Add me to your group", url="http://t.me/MissElisa_bot?startgroup=true")]]
+    keyboard += [[InlineKeyboardButton(text="📢 Support Group", url="https://t.me/ElisaSupportGroup"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/ElisaSupportGroup")]]
+    keyboard += [[InlineKeyboardButton(text="  Elisa Help ❓", callback_data="help_back")]]
+
+    update.effective_message.reply_text(PM_START_TEXT.format(escape_markdown(first_name), bot.first_name), reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
 
 
 # for test purposes
