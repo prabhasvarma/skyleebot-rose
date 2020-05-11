@@ -368,7 +368,7 @@ Anti-Spam uses @Spamwatch API and Global bans to remove Spammers as much as poss
 
 *What is SpamWatch?*
 
-SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters. Skylee will constantly help banning spammers off from your group automatically So, you don't have to worry about spammers storming your group.
+SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters. SuperMario will constantly help banning spammers off from your group automatically So, you don't have to worry about spammers storming your group.
 """
 
 __mod_name__ = "Anti-Spam"

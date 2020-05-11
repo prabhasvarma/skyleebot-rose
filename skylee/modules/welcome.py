@@ -123,17 +123,17 @@ def new_member(update, context):
 
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
-                update.effective_message.reply_text("Master is in the houseeee, let's get this party started!", reply_to_message_id=reply)
+                update.effective_message.reply_text("Owner is in the houseeee, let's get this party started!", reply_to_message_id=reply)
                 continue
 
             # Make bot greet admins
             elif new_mem.id == context.bot.id:
                 update.effective_message.reply_text("Hey {}, I'm {}! Thank you for adding me to {}" 
-                " and be sure to join our channel: @skyleeupdates to know more about updates and tricks!".format(user.first_name, context.bot.first_name, chat_name), reply_to_message_id=reply)
+                " and be sure to join our channel: @SuperMairoUpdates to know more about updates and tricks!".format(user.first_name, context.bot.first_name, chat_name), reply_to_message_id=reply)
 
                 context.bot.send_message(
                     MESSAGE_DUMP,
-                    "skylee have been added to {} with ID: <pre>{}</pre>".format(
+                    "SuperMario have been added to {} with ID: <pre>{}</pre>".format(
                         chat.title, chat.id),
                     parse_mode=ParseMode.HTML)
             else:
