@@ -33,11 +33,11 @@ Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_Pro
 """
 
 buttons = [[
-InlineKeyboardButton(text="Add to Group 👥", url="t.me/skylee_bot?startgroup=true"),
-InlineKeyboardButton(text="Updates 📢", url="https://t.me/skyleeupdates")
+InlineKeyboardButton(text="🎉 Add me to your group", url="t.me/SupMario_bot?startgroup=true")]]
+InlineKeyboardButton(text="📢 Support Group", url="https://t.me/SupermarioSupport")]]
                   ]]
 
-buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
+buttons += [[InlineKeyboardButton(text="Help❔", callback_data="help_back")]]
 
 
 HELP_STRINGS = f"""
