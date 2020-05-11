@@ -33,7 +33,7 @@ Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_Pro
 """
 
 buttons = [[
-InlineKeyboardButton(text="Add to Group 👥", url="t.me/skylee_bot?startgroup=true"),
+InlineKeyboardButton(text="Add to Group 👥", url="t.me/skylee_bot?startgroup=true")
 InlineKeyboardButton(text="Updates 📢", url="https://t.me/skyleeupdates")
                   ]]
 
