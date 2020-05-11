@@ -124,7 +124,7 @@ def gban(update, context):
     bannername = banner.first_name
     reason = f"{reason} // GBanned by {bannername} banner id: {bannerid}"
 
-    context.bot.sendMessage(MESSAGE_DUMP, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
+    context.bot.sendMessage(MESSAGE_DUMP,
                  "<b>New Global Ban</b>" \
                  "\n#GBAN" \
                  "\n<b>Status:</b> <code>Enforcing</code>" \
@@ -196,7 +196,7 @@ def ungban(update, context):
 
     message.reply_text("I'll give {} a second chance, globally.".format(user_chat.first_name))
 
-    context.bot.sendMessage(MESSAGE_DUMP, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
+    context.bot.sendMessage(MESSAGE_DUMP,
                  "<b>Regression of Global Ban</b>" \
                  "\n#UNGBAN" \
                  "\n<b>Status:</b> <code>Ceased</code>" \
@@ -362,16 +362,16 @@ def __chat_settings__(chat_id, user_id):
 
 __help__ = """
 *Admin only:*
- × /spamshield <on/off/yes/no>: Will disable or enable the effect of Spam protection in your group.
+ - /antispam <on/off/yes/no>: Will disable or enable the effect of Spam protection in your group.
 
-Spam shield uses @Spamwatch API and Global bans to remove Spammers as much as possible from your chatroom!
+Anti-Spam uses @Spamwatch API and Global bans to remove Spammers as much as possible from your chatroom!
 
 *What is SpamWatch?*
 
 SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters. Skylee will constantly help banning spammers off from your group automatically So, you don't have to worry about spammers storming your group.
 """
 
-__mod_name__ = "Spam Shield"
+__mod_name__ = "Anti-Spam"
 
 GBAN_HANDLER = CommandHandler("gban", gban, pass_args=True,
                               filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
@@ -380,7 +380,7 @@ UNGBAN_HANDLER = CommandHandler("ungban", ungban, pass_args=True,
 GBAN_LIST = CommandHandler("gbanlist", gbanlist,
                            filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 
-GBAN_STATUS = CommandHandler("spamshield", gbanstat, pass_args=True, filters=Filters.group)
+GBAN_STATUS = CommandHandler("antispam", gbanstat, pass_args=True, filters=Filters.group)
 
 GBAN_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
 
