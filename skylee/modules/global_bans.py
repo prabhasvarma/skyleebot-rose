@@ -355,7 +355,7 @@ def gkick(update, context):
     message = update.effective_message
     args = context.args
     try:
-        user_chat = bot.get_chat(user_id)
+        user_id, reason = extract_user_and_text(message, args)
     except BadRequest as excp:
         if excp.message in GKICK_ERRORS:
             pass
