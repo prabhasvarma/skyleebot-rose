@@ -314,14 +314,19 @@ Some dank memes for ya all!
  - /table: Flips a table...
  - /runs: Reply a random string from an array of replies.
  - /slap: Slap a user, or get slapped if not a reply.
- - /dice: Sends a dice which returns randomly from 1 to 6!
- - /dart: Send a dart and see if you hit bullseye.
  - /pasta: Famous copypasta meme, try and see.
  - /clap: Claps on someones message!
  - /owo: UwU-fy whole text XD.
  - /str:  streeeeeeetch iiiiiiit.
  - /warm: Hug a user warmly, or get hugged if not a reply.
  - /punch: Punch a user, or get punched if not a reply.
+
+ - Some Cool stuffs Based On New API 4.8
+ - /dice - Sends The Dice Emoji Which Gives Value From 1 to 6
+ - /darts - New Darts Animation, Must Have A Try
+ 
+ Admin only:
+ - /police : Try it ;)
 """
 
 __mod_name__ = "Memes"
