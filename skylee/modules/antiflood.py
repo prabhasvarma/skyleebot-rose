@@ -82,7 +82,6 @@ def check_flood(update, context) -> str:
 @run_async
 @user_admin
 @loggable
-@typing_action
 def set_flood(update, context) -> str:
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -148,7 +147,6 @@ def set_flood(update, context) -> str:
 
 
 @run_async
-@typing_action
 def flood(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -183,7 +181,6 @@ def flood(update, context):
 @run_async
 @user_admin
 @loggable
-@typing_action
 def set_flood_mode(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -283,12 +280,12 @@ You know how sometimes, people join, send 100 messages, and ruin your chat? With
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood \
 will result in restricting that user.
 
- × /flood: Get the current flood control setting
+ - /flood: Get the current flood control setting
 
 *Admin only*:
 
- × /setflood <int/'no'/'off'>: enables or disables flood control
- × /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
+ - /setflood <int/'no'/'off'>: enables or disables flood control
+ - /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
 
  Note:
  - Value must be filled for tban and tmute!

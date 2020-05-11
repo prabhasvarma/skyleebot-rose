@@ -14,7 +14,6 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 @run_async
-@typing_action
 def get_rules(update, context):
     chat_id = update.effective_chat.id
     send_rules(update, chat_id)
@@ -55,7 +54,6 @@ def send_rules(update, chat_id, from_pm=False):
 
 @run_async
 @user_admin
-@typing_action
 def set_rules(update, context):
     chat_id = update.effective_chat.id
     msg = update.effective_message  # type: Optional[Message]
@@ -72,7 +70,6 @@ def set_rules(update, context):
 
 @run_async
 @user_admin
-@typing_action
 def clear_rules(update, context):
     chat_id = update.effective_chat.id
     sql.set_rules(chat_id, "")
@@ -103,8 +100,8 @@ Every chat works with different rules; this module will help make those rules cl
  × /rules: get the rules for this chat.
 
 *Admin only:*
- × /setrules <your rules here>: Sets rules for the chat.
- × /clearrules: Clears saved rules for the chat.
+ - /setrules <your rules here>: Sets rules for the chat.
+ - /clearrules: Clears saved rules for the chat.
 """
 
 __mod_name__ = "Rules"

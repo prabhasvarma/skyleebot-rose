@@ -9,7 +9,6 @@ from skylee.modules.disable import DisableAbleCommandHandler
 from skylee.modules.helper_funcs.alternate import typing_action
 
 @run_async
-@typing_action
 def weather(update, context):
     args = context.args
     if len(args) == 0:
@@ -99,7 +98,7 @@ def weather(update, context):
 __help__ = """
 Weather module:
 
- × /weather <city>: Gets weather information of particular place!
+ - /weather <city>: Gets weather information of particular place!
 
  \* To prevent spams weather command and the output will be deleted after 30 seconds
 """

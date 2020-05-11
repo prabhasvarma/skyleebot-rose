@@ -84,7 +84,6 @@ if is_module_loaded(FILENAME):
 
     @run_async
     @user_admin
-    @typing_action
     def disable(update, context):
         chat = update.effective_chat  # type: Optional[Chat]
         user = update.effective_user
@@ -126,7 +125,6 @@ if is_module_loaded(FILENAME):
 
     @run_async
     @user_admin
-    @typing_action
     def enable(update, context):
         chat = update.effective_chat  # type: Optional[Chat]
         user = update.effective_user
@@ -166,7 +164,6 @@ if is_module_loaded(FILENAME):
 
     @run_async
     @user_admin
-    @typing_action
     def list_cmds(update, context):
         if DISABLE_CMDS + DISABLE_OTHER:
             result = ""
@@ -191,7 +188,6 @@ if is_module_loaded(FILENAME):
 
 
     @run_async
-    @typing_action
     def commands(update, context):
         chat = update.effective_chat
         user = update.effective_user
@@ -240,12 +236,12 @@ left unused; to avoid spam and abuse.
 This allows you to disable some commonly used commands, so noone can use them. \
 It'll also allow you to autodelete them, stopping people from bluetexting.
 
- × /cmds: Check the current status of disabled commands
+ - /cmds: Check the current status of disabled commands
 
 *Admin only:*
- × /enable <cmd name>: Enable that command
- × /disable <cmd name>: Disable that command
- × /listcmds: List all possible disablable commands
+ - /enable <cmd name>: Enable that command
+ - /disable <cmd name>: Disable that command
+ - /listcmds: List all possible disablable commands
     """
 
     DISABLE_HANDLER = CommandHandler("disable", disable, pass_args=True)#, filters=Filters.group)

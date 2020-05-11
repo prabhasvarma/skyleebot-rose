@@ -18,7 +18,6 @@ REPORT_GROUP = 5
 
 @run_async
 @user_admin
-@typing_action
 def report_setting(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     msg = update.effective_message  # type: Optional[Message]
@@ -55,7 +54,6 @@ def report_setting(update, context):
 @run_async
 @user_not_admin
 @loggable
-@typing_action
 def report(update, context) -> str:
     message = update.effective_message  # type: Optional[Message]
     chat = update.effective_chat  # type: Optional[Chat]
@@ -142,7 +140,7 @@ Presenting reports; if someone in your group thinks someone needs reporting, the
 an easy way to call all admins.
 
 *Admin only:*
- × /reports <on/off>: Change report setting, or view current status.
+ - /reports <on/off>: Change report setting, or view current status.
    • If done in pm, toggles your status.
    • If in chat, toggles that chat's status.
 

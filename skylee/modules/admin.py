@@ -23,7 +23,6 @@ from skylee.modules.log_channel import loggable
 @can_promote
 @user_admin
 @loggable
-@typing_action
 def promote(update, context):
     chat_id = update.effective_chat.id
     message = update.effective_message  # type: Optional[Message]
@@ -75,7 +74,6 @@ def promote(update, context):
 @can_promote
 @user_admin
 @loggable
-@typing_action
 def demote(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     message = update.effective_message  # type: Optional[Message]
@@ -132,7 +130,6 @@ def demote(update, context):
 @can_pin
 @user_admin
 @loggable
-@typing_action
 def pin(update, context):
     args = context.args
     user = update.effective_user  # type: Optional[User]
@@ -171,7 +168,6 @@ def pin(update, context):
 @can_pin
 @user_admin
 @loggable
-@typing_action
 def unpin(update, context):
     args = context.args
     chat = update.effective_chat
@@ -199,7 +195,6 @@ def unpin(update, context):
 @run_async
 @bot_admin
 @user_admin
-@typing_action
 def invite(update, context):
         user = update.effective_user
         msg = update.effective_message
@@ -233,7 +228,6 @@ def invite(update, context):
 
 
 @run_async
-@typing_action
 def adminlist(update, context):
     administrators = update.effective_chat.get_administrators()
     text = "Admins in *{}*:".format(update.effective_chat.title or "this chat")
@@ -261,7 +255,6 @@ def adminlist(update, context):
 @bot_admin
 @can_promote
 @user_admin
-@typing_action
 def set_title(update, context):
     args = context.args
     chat = update.effective_chat
@@ -307,7 +300,6 @@ def set_title(update, context):
 @run_async
 @bot_admin
 @user_admin
-@typing_action
 def setchatpic(update,context):
     chat = update.effective_chat
     msg = update.effective_message
@@ -346,7 +338,6 @@ def setchatpic(update,context):
 @run_async
 @bot_admin
 @user_admin
-@typing_action
 def rmchatpic(update, context):
     chat = update.effective_chat
     msg = update.effective_message
@@ -367,7 +358,6 @@ def rmchatpic(update, context):
 @run_async
 @bot_admin
 @user_admin
-@typing_action
 def setchat_title(update, context):
     chat = update.effective_chat
     msg = update.effective_message
@@ -405,15 +395,15 @@ done easily using the bot.
  × /adminlist: list of admins in the chat
 
 *Admin only:*
- × /pin: Silently pins the message replied to - add `loud`, `notify` or `violent` to give notificaton to users.
- × /unpin: Unpins the currently pinned message.
- × /invitelink: Gets private chat's invitelink.
- × /promote: Promotes the user replied to.
- × /demote: Demotes the user replied to.
- × /settitle: Sets a custom title for an admin which is promoted by bot.
- × /setgpic: As a reply to file or photo to set group profile pic!
- × /delgpic: Same as above but to remove group profile pic.
- × /setgtitle <newtitle>: Sets new chat title in your group.
+ - /pin: Silently pins the message replied to - add `loud`, `notify` or `violent` to give notificaton to users.
+ - /unpin: Unpins the currently pinned message.
+ - /invitelink: Gets private chat's invitelink.
+ - /promote: Promotes the user replied to.
+ - /demote: Demotes the user replied to.
+ - /settitle: Sets a custom title for an admin which is promoted by bot.
+ - /setgpic: As a reply to file or photo to set group profile pic!
+ - /delgpic: Same as above but to remove group profile pic.
+ - /setgtitle <newtitle>: Sets new chat title in your group.
 
 An example of promoting someone to admins:
 `/promote @username`; this promotes a user to admins.

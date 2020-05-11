@@ -22,7 +22,6 @@ from skylee.modules.log_channel import loggable
 @can_restrict
 @user_admin
 @loggable
-@typing_action
 def ban(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -91,7 +90,6 @@ def ban(update, context):
 @can_restrict
 @user_admin
 @loggable
-@typing_action
 def temp_ban(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -179,7 +177,6 @@ def temp_ban(update, context):
 @can_restrict
 @user_admin
 @loggable
-@typing_action
 def kick(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -238,7 +235,6 @@ def kick(update, context):
 @bot_admin
 @can_restrict
 @loggable
-@typing_action
 def banme(update, context):
     user_id = update.effective_message.from_user.id
     chat = update.effective_chat
@@ -264,7 +260,6 @@ def banme(update, context):
 @run_async
 @bot_admin
 @can_restrict
-@typing_action
 def kickme(update, context):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
@@ -283,7 +278,6 @@ def kickme(update, context):
 @can_restrict
 @user_admin
 @loggable
-@typing_action
 def unban(update, context):
     message = update.effective_message  # type: Optional[Message]
     user = update.effective_user  # type: Optional[User]
@@ -337,13 +331,13 @@ __help__ = """
 Some people need to be publicly banned; spammers, annoyances, or just trolls.
 This module allows you to do that easily, by exposing some common actions, so everyone will see!
 
- × /kickme: Kicks the user who issued the command
- × /banme: Bans the user who issued the command
+ - /kickme: Kicks the user who issued the command
+ - /banme: Bans the user who issued the command
 *Admin only:*
- × /ban <userhandle>: Bans a user. (via handle, or reply)
- × /tban <userhandle> x(m/h/d): Bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
- × /unban <userhandle>: Unbans a user. (via handle, or reply)
- × /kick <userhandle>: Kicks a user, (via handle, or reply)
+ - /ban <userhandle>: Bans a user. (via handle, or reply)
+ - /tban <userhandle> x(m/h/d): Bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
+ - /unban <userhandle>: Unbans a user. (via handle, or reply)
+ - /kick <userhandle>: Kicks a user, (via handle, or reply)
 
 An example of temporarily banning someone:
 `/tban @username 2h`; this bans a user for 2 hours.

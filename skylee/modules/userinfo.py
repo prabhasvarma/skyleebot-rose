@@ -14,7 +14,6 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 @run_async
-@typing_action
 def about_me(update, context):
     message = update.effective_message  # type: Optional[Message]
     args = context.args
@@ -38,7 +37,6 @@ def about_me(update, context):
 
 
 @run_async
-@typing_action
 def set_about_me(update, context):
     message = update.effective_message  # type: Optional[Message]
     user_id = message.from_user.id
@@ -54,7 +52,6 @@ def set_about_me(update, context):
 
 
 @run_async
-@typing_action
 def about_bio(update, context):
     message = update.effective_message  # type: Optional[Message]
     args = context.args
@@ -78,7 +75,6 @@ def about_bio(update, context):
 
 
 @run_async
-@typing_action
 def set_about_bio(update, context):
     message = update.effective_message  # type: Optional[Message]
     sender = update.effective_user  # type: Optional[User]
@@ -125,10 +121,10 @@ promoting your profile.
 
 All bios are displayed on /info command.
 
- × /setbio <text>: While replying, will save another user's bio
- × /bio: Will get your or another user's bio. This cannot be set by yourself.
- × /setme <text>: Will set your info
- × /me: Will get your or another user's info
+ - /setbio <text>: While replying, will save another user's bio
+ - /bio: Will get your or another user's bio. This cannot be set by yourself.
+ - /setme <text>: Will set your info
+ - /me: Will get your or another user's info
 
 An example of setting a bio for yourself:
 `/setme I work for Telegram`; Bio is set to yourself.

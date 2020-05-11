@@ -14,7 +14,6 @@ GITHUB = 'https://github.com'
 DEVICES_DATA = 'https://raw.githubusercontent.com/androidtrackers/certified-android-devices/master/by_device.json'
 
 @run_async
-@typing_action
 def magisk(update, context):
     url = 'https://raw.githubusercontent.com/topjohnwu/magisk_files/'
     releases = ""
@@ -38,7 +37,6 @@ def magisk(update, context):
             return
 
 @run_async
-@typing_action
 def device(update, context):
     args = context.args
     if len(args) == 0:
@@ -80,7 +78,6 @@ def device(update, context):
 
 
 @run_async
-@typing_action
 def twrp(update, context):
     args = context.args
     if len(args) == 0:
@@ -138,9 +135,9 @@ Get Latest magisk relese, Twrp for your device or info about some device using i
 
 *Android related commands:*
 
- × /magisk - Gets the latest magisk release for Stable/Beta/Canary.
- × /device <codename> - Gets android device basic info from its codename.
- × /twrp <codename> -  Gets latest twrp for the android device using the codename.
+ - /magisk - Gets the latest magisk release for Stable/Beta/Canary.
+ - /device <codename> - Gets android device basic info from its codename.
+ - /twrp <codename> -  Gets latest twrp for the android device using the codename.
 """
 
 __mod_name__ = "Android"

@@ -25,7 +25,6 @@ BLACKLIST_GROUP = 11
 
 
 @run_async
-@typing_action
 def blacklist(update, context):
 	msg = update.effective_message  # type: Optional[Message]
 	chat = update.effective_chat  # type: Optional[Chat]
@@ -67,7 +66,6 @@ def blacklist(update, context):
 
 @run_async
 @user_admin
-@typing_action
 def add_blacklist(update, context):
 	msg = update.effective_message  # type: Optional[Message]
 	chat = update.effective_chat  # type: Optional[Chat]
@@ -104,7 +102,6 @@ def add_blacklist(update, context):
 
 @run_async
 @user_admin
-@typing_action
 def unblacklist(update, context):
 	msg = update.effective_message  # type: Optional[Message]
 	chat = update.effective_chat  # type: Optional[Chat]
@@ -158,7 +155,6 @@ def unblacklist(update, context):
 @run_async
 @loggable
 @user_admin
-@typing_action
 def blacklist_mode(update, context):
 	chat = update.effective_chat  # type: Optional[Chat]
 	user = update.effective_user  # type: Optional[User]
@@ -360,13 +356,13 @@ Blacklists are used to stop certain triggers from being said in a group. Any tim
 
 *NOTE*: Blacklists do not affect group admins.
 
- × /blacklist: View the current blacklisted words.
+ - /blacklist: View the current blacklisted words.
 
 Admin only:
- × /addblacklist <triggers>: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
- × /unblacklist <triggers>: Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
- × /rmblacklist <triggers>: Same as above.
- × /blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>: Action to perform when someone sends blacklisted words.
+ - /addblacklist <triggers>: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
+ - /unblacklist <triggers>: Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
+ - /rmblacklist <triggers>: Same as above.
+ - /blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>: Action to perform when someone sends blacklisted words.
 """
 BLACKLIST_HANDLER = DisableAbleCommandHandler("blacklist", blacklist, pass_args=True,
 											  admin_ok=True)

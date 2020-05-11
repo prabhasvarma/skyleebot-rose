@@ -25,7 +25,6 @@ BASIC_FILTER_STRING = "*Filters in {}:*\n"
 
 
 @run_async
-@typing_action
 def list_handlers(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -277,14 +276,14 @@ def __import_data__(chat_id, data):
 
 
 __help__ = """
- × /filters: List all active filters saved in the chat.
+ - /filters: List all active filters saved in the chat.
 
 *Admin only:*
- × /filter <keyword> <reply message>: Add a filter to this chat. The bot will now reply that message whenever 'keyword'\
+ - /filter <keyword> <reply message>: Add a filter to this chat. The bot will now reply that message whenever 'keyword'\
 is mentioned. If you reply to a sticker with a keyword, the bot will reply with that sticker. NOTE: all filter \
 keywords are in lowercase. If you want your keyword to be a sentence, use quotes. eg: /filter "hey there" How you \
 doin?
- × /stop <filter keyword>: Stop that filter.
+ - /stop <filter keyword>: Stop that filter.
 """
 
 __mod_name__ = "Filters"

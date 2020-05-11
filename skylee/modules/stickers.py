@@ -20,7 +20,6 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 @run_async
-@typing_action
 def kang(update, context):
     msg = update.effective_message
     user = update.effective_user
@@ -231,7 +230,6 @@ def getsticker(update, context):
                                             parse_mode=ParseMode.MARKDOWN)
 
 @run_async
-@typing_action
 def stickerid(update, context):
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.sticker:
@@ -249,9 +247,9 @@ def stickerid(update, context):
 __help__ = """
 Kanging Stickers made easy with stickers module!
 
-× /stickerid: Reply to a sticker to me to tell you its file ID.
-× /getsticker: Reply to a sticker to me to upload its raw PNG file.
-× /kang: Reply to a sticker to add it to your pack.
+- /stickerid: Reply to a sticker to me to tell you its file ID.
+- /getsticker: Reply to a sticker to me to upload its raw PNG file.
+- /kang: Reply to a sticker to add it to your pack.
 """
 
 __mod_name__ = "Stickers"

@@ -140,7 +140,6 @@ def get(bot, update, notename, show_none=True, no_format=False):
 
 
 @run_async
-@typing_action
 def cmd_get(update, context):
     args = context.args
     if len(args) >= 2 and args[1].lower() == "noformat":
@@ -161,7 +160,6 @@ def hash_get(update, context):
 
 @run_async
 @user_admin
-@typing_action
 def save(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -197,7 +195,6 @@ def save(update, context):
 
 @run_async
 @user_admin
-@typing_action
 def clear(update, context):
     args = context.args
     chat = update.effective_chat  # type: Optional[Chat]
@@ -226,7 +223,6 @@ def clear(update, context):
 
 
 @run_async
-@typing_action
 def list_notes(update, context):
     chat_id = update.effective_chat.id
     chat = update.effective_chat  # type: Optional[Chat]
@@ -364,19 +360,19 @@ Save data for future users with notes!
 
 Notes are great to save random tidbits of information; a phone number, a nice gif, a funny picture - anything!
 
- × /get <notename>: Get the note with this notename
- × #<notename>: Same as /get
- × /notes or /saved: Lists all saved notes in the chat
+ - /get <notename>: Get the note with this notename
+ - #<notename>: Same as /get
+ - /notes or /saved: Lists all saved notes in the chat
 
 If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
 be useful when updating a current note.
 
 *Admin only:*
- × /save <notename> <notedata>: Saves notedata as a note with name notename
+ - /save <notename> <notedata>: Saves notedata as a note with name notename
 A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
 `buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check /markdownhelp for more info.
- × /save <notename>: Saves the replied message as a note with name notename
- × /clear <notename>: Clears note with this name
+ - /save <notename>: Saves the replied message as a note with name notename
+ - /clear <notename>: Clears note with this name
 
  An example of how to save a note would be via:
 `/save Data This is some data!`

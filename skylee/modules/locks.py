@@ -118,7 +118,6 @@ def locktypes(update, context):
 @run_async
 @user_admin
 @loggable
-@typing_action
 def lock(update, context) -> str:
 	args = context.args
 	chat = update.effective_chat  # type: Optional[Chat]
@@ -194,7 +193,6 @@ def lock(update, context) -> str:
 @run_async
 @user_admin
 @loggable
-@typing_action
 def unlock(update, context) -> str:
 	args = context.args
 	chat = update.effective_chat  # type: Optional[Chat]
@@ -375,7 +373,6 @@ def build_lock_message(chat_id):
 
 @run_async
 @user_admin
-@typing_action
 def list_locks(update, context):
 	chat = update.effective_chat  # type: Optional[Chat]
 	user = update.effective_user
@@ -439,12 +436,12 @@ You're in the right place!
 The locks module allows you to lock away some common items in the \
 telegram world; the bot will automatically delete them!
 
- × /locktypes: Lists all possible locktypes
+ - /locktypes: Lists all possible locktypes
  
 *Admin only:*
- × /lock <type>: Lock items of a certain type (not available in private)
- × /unlock <type>: Unlock items of a certain type (not available in private)
- × /locks: The current list of locks in this chat.
+ - /lock <type>: Lock items of a certain type (not available in private)
+ - /unlock <type>: Unlock items of a certain type (not available in private)
+ - /locks: The current list of locks in this chat.
  
 Locks can be used to restrict a group's users.
 eg:

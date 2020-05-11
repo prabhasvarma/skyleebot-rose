@@ -21,13 +21,11 @@ from skylee.modules.disable import DisableAbleCommandHandler, DisableAbleMessage
 import skylee.modules.helper_funcs.fun_strings as fun
 
 @run_async
-@typing_action
 def runs(update, context):
     update.effective_message.reply_text(random.choice(fun.RUN_STRINGS))
 
 
 @run_async
-@typing_action
 def slap(update, context):
     args = context.args
     msg = update.effective_message  # type: Optional[Message]
@@ -67,7 +65,6 @@ def slap(update, context):
 
 
 @run_async
-@typing_action
 def punch(update, context):
     args = context.args
     msg = update.effective_message  # type: Optional[Message]
@@ -107,7 +104,6 @@ def punch(update, context):
 
 
 @run_async
-@typing_action
 def hug(update, context):
     args = context.args
     msg = update.effective_message  # type: Optional[Message]
@@ -145,49 +141,41 @@ def hug(update, context):
 
 
 @run_async
-@typing_action
 def abuse(update, context):
     # reply to correct message
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun.ABUSE_STRINGS))
 
 @run_async
-@typing_action
 def shrug(update, context):
     # reply to correct message
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun.SHGS))
 
 @run_async
-@typing_action
 def decide(update, context):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun.DECIDE))
 
 @run_async
-@typing_action
 def table(update, context):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun.TABLE))
 
 @run_async
-@typing_action
 def cri(update, context):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun.CRI))
 
 @run_async
-@typing_action
 def dice(update, context):
     context.bot.sendDice(update.effective_chat.id)
 
 @run_async
-@typing_action
 def dart(update, context):
     context.bot.sendDice(update.effective_chat.id, emoji='🎯')
 
 @run_async
-@typing_action
 def gbun(update, context):
     user = update.effective_user
     chat = update.effective_chat
@@ -198,7 +186,6 @@ def gbun(update, context):
        context.bot.sendMessage(chat.id, (random.choice(fun.GBUN)))
 
 @run_async
-@typing_action
 def snipe(update, context):
     args = context.args
     try:
@@ -216,7 +203,6 @@ def snipe(update, context):
 
 
 @run_async
-@typing_action
 def copypasta(update, context):
     message = update.effective_message
     if not message.reply_to_message:
@@ -243,7 +229,6 @@ def copypasta(update, context):
 
 
 @run_async
-@typing_action
 def clapmoji(update, context):
     message = update.effective_message
     if not message.reply_to_message:
@@ -256,7 +241,6 @@ def clapmoji(update, context):
 
 
 @run_async
-@typing_action
 def owo(update, context):
     message = update.effective_message
     if not message.reply_to_message:
@@ -280,7 +264,6 @@ def owo(update, context):
 
 
 @run_async
-@typing_action
 def stretch(update, context):
     message = update.effective_message
     if not message.reply_to_message:
@@ -325,20 +308,20 @@ def ports_bug(update, context):
 __help__ = """
 Some dank memes for ya all!
 
- × /shrug | /cri: Get shrug or (ToT)!
- × /decide: Randomly answers yes/no/maybe
- × /abuse: Abuses the retard!
- × /table: Flips a table...
- × /runs: Reply a random string from an array of replies.
- × /slap: Slap a user, or get slapped if not a reply.
- × /dice: Sends a dice which returns randomly from 1 to 6!
- × /dart: Send a dart and see if you hit bullseye.
- × /pasta: Famous copypasta meme, try and see.
- × /clap: Claps on someones message!
- × /owo: UwU-fy whole text XD.
- × /str:  streeeeeeetch iiiiiiit.
- × /warm: Hug a user warmly, or get hugged if not a reply.
- × /punch: Punch a user, or get punched if not a reply.
+ - /shrug | /cri: Get shrug or (ToT)!
+ - /decide: Randomly answers yes/no/maybe
+ - /abuse: Abuses the retard!
+ - /table: Flips a table...
+ - /runs: Reply a random string from an array of replies.
+ - /slap: Slap a user, or get slapped if not a reply.
+ - /dice: Sends a dice which returns randomly from 1 to 6!
+ - /dart: Send a dart and see if you hit bullseye.
+ - /pasta: Famous copypasta meme, try and see.
+ - /clap: Claps on someones message!
+ - /owo: UwU-fy whole text XD.
+ - /str:  streeeeeeetch iiiiiiit.
+ - /warm: Hug a user warmly, or get hugged if not a reply.
+ - /punch: Punch a user, or get punched if not a reply.
 """
 
 __mod_name__ = "Memes"

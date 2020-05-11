@@ -17,7 +17,6 @@ from skylee.modules.helper_funcs.alternate import typing_action
 
 
 @run_async
-@typing_action
 def ping(update, context):
     tg_api = ping3('api.telegram.org', count=4)
     google = ping3('google.com', count=4)
@@ -44,7 +43,6 @@ def speed_convert(size):
     return f"{round(size, 2)} {units[zero]}"
 
 @run_async
-@typing_action
 def get_bot_ip(update, context):
     """ Sends the bot's IP address, so as to be able to ssh in if necessary.
         OWNER ONLY.
@@ -55,7 +53,6 @@ def get_bot_ip(update, context):
 
 
 @run_async
-@typing_action
 def speedtst(update, context):
     test = speedtest.Speedtest()
     test.get_best_server()
@@ -74,7 +71,6 @@ def speedtst(update, context):
 
 
 @run_async
-@typing_action
 def system_status(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
     status = "<b>======[ SYSTEM INFO ]======</b>\n\n"
