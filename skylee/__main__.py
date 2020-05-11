@@ -32,13 +32,6 @@ Made with love by [KR$NA](http://t.me/SeedhaMaut), [ﾚの刀乇 Wのﾚｷ](htt
 Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_ProBot?startgroup=true)
 """
 
-buttons = [[
-InlineKeyboardButton(text="Add to Group 👥", url="t.me/SupMario_bot?startgroup=true")
-buttons += [[InlineKeyboardButton(text="Updates 📢", url="https://t.me/skyleeupdates")]]
-
-buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
-
-
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
@@ -129,7 +122,10 @@ def start(update, context):
         args = context.args
         if len(args) >= 1:
             if args[0].lower() == "help":
-                send_help(update.effective_chat.id, HELP_STRINGS)
+                send_help(update.effective_chat.id, tl(update.effective_message, HELP_STRINGS))
+
+            elif args[0].lower() == "get_notes":
+                update.effective_message.reply_text(tl(update.effective_message, "Anda sekarang dapat mengambil catatan di grup."))
 
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
@@ -143,10 +139,39 @@ def start(update, context):
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
+            elif args[0][:4] == "wiki":
+                wiki = args[0].split("-")[1].replace('_', ' ')
+                message = update.effective_message
+                getlang = langsql.get_lang(message)
+                if getlang == "id":
+                    wikipedia.set_lang("id")
+                pagewiki = wikipedia.page(wiki)
+                judul = pagewiki.title
+                summary = pagewiki.summary
+                if len(summary) >= 4096:
+                    summary = summary[:4000]+"..."
+                message.reply_text("<b>{}</b>\n{}".format(judul, summary), parse_mode=ParseMode.HTML,
+                    reply_markup=InlineKeyboardMarkup(
+                            [[InlineKeyboardButton(text=tl(update.effective_message, "Baca di Wikipedia"), url=pagewiki.url)]]))
+
+            elif args[0][:6].lower() == "verify":
+                chat_id = args[0].split("_")[1]
+                verify_welcome(update, context, chat_id)
+
         else:
-            update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+            first_name = update.effective_user.first_name
+            buttons = InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🎉 Add me to your group", url="https://t.me/{}?startgroup=new".format(context.bot.username))],
+                [InlineKeyboardButton(text="💭 Language", callback_data="main_setlang"), InlineKeyboardButton(text="⚙️ Connect Group", callback_data="main_connect")],
+                [InlineKeyboardButton(text="👥 Support Group", url="https://t.me/EmiliaOfficial"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/AyraBotNews")],
+                [InlineKeyboardButton(text="❓ Help", url="https://t.me/{}?start=help".format(context.bot.username)), InlineKeyboardButton(text="💖 Donate", url="http://ayrahikari.github.io/donations.html")]])
+            update.effective_message.reply_text(
+                tl(update.effective_message, PM_START_TEXT).format(escape_markdown(first_name), escape_markdown(context.bot.first_name), OWNER_ID),
+                disable_web_page_preview=True,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=buttons)
     else:
-        update.effective_message.reply_text("Sending you a warm hi & wishing your day is a happy one!")
+        update.effective_message.reply_text(tl(update.effective_message, "Ada yang bisa saya bantu? 😊"))
 
 
 # for test purposes
