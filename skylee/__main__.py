@@ -147,7 +147,7 @@ def start(update, context):
         else:
             update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
-        update.effective_message.reply_text("Control Mario with just a tap!")
+        update.effective_message.reply_text("Hey :D PM me if you have any questions on how to use me!🌟")
         
 
 # for test purposes
