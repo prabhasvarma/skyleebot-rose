@@ -147,8 +147,8 @@ def start(update, context):
         else:
             update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
-        context.bot.sendMessage("Excuse me, is your name {}? Because you look like a hot-tea!".format(mention_html(user_chat.id, user_chat.first_name)),
-
+        context.bot.sendMessage(chat.id, "Goodbye {}.".format(mention_html(member.user.id, member.user.first_name)), parse_mode=ParseMode.HTML)
+        
 
 # for test purposes
 def error_callback(update, context):
