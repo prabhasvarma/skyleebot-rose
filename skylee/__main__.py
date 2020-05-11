@@ -139,7 +139,7 @@ def start(update, context):
     else:
         update.effective_message.reply_text("Sending you a warm hi & wishing your day is a happy one!")
 
-def send_start(bot, update):
+def send_start(update, context):
     #Try to remove old message
     try:
         query = update.callback_query
