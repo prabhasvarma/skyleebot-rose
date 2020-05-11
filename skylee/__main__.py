@@ -32,6 +32,12 @@ Made with love by [KR$NA](http://t.me/SeedhaMaut), [ﾚの刀乇 Wのﾚｷ](htt
 Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_ProBot?startgroup=true)
 """
 
+buttons = [[
+InlineKeyboardButton(text="Add to Group 👥", url="t.me/skylee_bot?startgroup=true")
+
+buttons += [[InlineKeyboardButton(text="Help & Commands ❔", callback_data="help_back")]]
+
+
 HELP_STRINGS = f"""
 Hello there! My name is *{dispatcher.bot.first_name}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
@@ -107,12 +113,14 @@ def send_help(chat_id, text, keyboard=None):
                                 parse_mode=ParseMode.MARKDOWN,
                                 reply_markup=keyboard)
 
+
 @run_async
 def test(update, context):
     # pprint(eval(str(update)))
     # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
+
 
 @run_async
 def start(update, context):
@@ -134,26 +142,10 @@ def start(update, context):
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
+        else:
+            update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
         update.effective_message.reply_text("Sending you a warm hi & wishing your day is a happy one!")
-
-def send_start(update, context):
-    #Try to remove old message
-    try:
-        query = update.callback_query
-        query.message.delete()
-    except:
-        pass
-
-    chat = update.effective_chat  # type: Optional[Chat]
-    first_name = update.effective_user.first_name 
-    text = PM_START_TEXT
-
-    keyboard = [[InlineKeyboardButton(text="🎉 Add me to your group", url="http://t.me/MissElisa_bot?startgroup=true")]]
-    keyboard += [[InlineKeyboardButton(text="📢 Support Group", url="https://t.me/ElisaSupportGroup"), InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/ElisaSupportGroup")]]
-    keyboard += [[InlineKeyboardButton(text="  Elisa Help ❓", callback_data="help_back")]]
-
-    update.effective_message.reply_text(PM_START_TEXT.format(escape_markdown(first_name), bot.first_name), reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
 
 
 # for test purposes
@@ -178,7 +170,7 @@ def error_callback(update, context):
     except TelegramError:
         # handle all other telegram related errors
         LOGGER.exception('Update "%s" caused error "%s"', update, context.error)
-        
+
 @run_async
 def help_button(update, context):
     query = update.callback_query
@@ -229,6 +221,7 @@ def help_button(update, context):
             query.message.edit_text(excp.message)
             LOGGER.exception("Exception in help buttons. %s", str(query.data))
 
+
 @run_async
 def get_help(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -278,6 +271,7 @@ def send_settings(chat_id, user_id, user=False):
             dispatcher.bot.send_message(user_id, "Seems like there aren't any chat settings available :'(\nSend this "
                                                  "in a group chat you're admin in to find its current settings!",
                                         parse_mode=ParseMode.MARKDOWN)
+
 
 @run_async
 def settings_button(update, context):
