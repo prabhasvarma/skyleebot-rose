@@ -27,9 +27,9 @@ Click Help button to find out more about how to use me to my full potential.
 
 Join SuperMairo Group [SuperMarioSupport](http://t.me/SupermarioSupport) ( @SuperMairoUpdates ) if you need any support or help.
 
-Made with love by [KR$NA](http://t.me/SeedhaMaut), [ﾚの刀乇 Wのﾚｷ](http://t.me/SeedhaMaut)
+Made with love by [KR$NA](http://t.me/SeedhaMaut), [ﾚの刀乇 Wのﾚｷ](http://t.me/MetaForce_XD)
 
-Want to add me to your group? Click here! [Click Here](http://t.me/SpiderMan_ProBot?startgroup=true)
+Want to add me to your group? Click here! [Click Here](http://t.me/SupMario_bot?startgroup=true)
 """
 
 buttons = [[
@@ -147,7 +147,7 @@ def start(update, context):
         else:
             update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
-        update.effective_message.reply_text("Sending you a warm hi & wishing your day is a happy one!")
+        update.effective_message.reply_text("Excuse me, is your name {first}? Because you look like a hot-tea!")
 
 
 # for test purposes
