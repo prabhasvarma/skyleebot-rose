@@ -124,7 +124,7 @@ def gban(update, context):
     bannername = banner.first_name
     reason = f"{reason} // GBanned by {bannername} banner id: {bannerid}"
 
-    context.bot.sendMessage(MESSAGE_DUMP,
+    context.bot.sendMessage(MESSAGE_DUMP, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
                  "<b>New Global Ban</b>" \
                  "\n#GBAN" \
                  "\n<b>Status:</b> <code>Enforcing</code>" \
@@ -196,7 +196,7 @@ def ungban(update, context):
 
     message.reply_text("I'll give {} a second chance, globally.".format(user_chat.first_name))
 
-    context.bot.sendMessage(MESSAGE_DUMP,
+    context.bot.sendMessage(MESSAGE_DUMP, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
                  "<b>Regression of Global Ban</b>" \
                  "\n#UNGBAN" \
                  "\n<b>Status:</b> <code>Ceased</code>" \
