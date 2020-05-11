@@ -115,7 +115,7 @@ def send_help(chat_id, text, keyboard=None):
                                 parse_mode=ParseMode.MARKDOWN,
                                 reply_markup=keyboard)
 
-
+@asyncio
 @run_async
 def test(update, context):
     # pprint(eval(str(update)))
@@ -123,7 +123,7 @@ def test(update, context):
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
 
-
+@asyncio
 @run_async
 def start(update, context):
     if update.effective_chat.type == "private":
@@ -172,7 +172,7 @@ def error_callback(update, context):
     except TelegramError:
         # handle all other telegram related errors
         LOGGER.exception('Update "%s" caused error "%s"', update, context.error)
-
+@asyncio
 @run_async
 def help_button(update, context):
     query = update.callback_query
@@ -223,7 +223,7 @@ def help_button(update, context):
             query.message.edit_text(excp.message)
             LOGGER.exception("Exception in help buttons. %s", str(query.data))
 
-
+@asyncio
 @run_async
 def get_help(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -274,7 +274,7 @@ def send_settings(chat_id, user_id, user=False):
                                                  "in a group chat you're admin in to find its current settings!",
                                         parse_mode=ParseMode.MARKDOWN)
 
-
+@asyncio
 @run_async
 def settings_button(update, context):
     query = update.callback_query
@@ -341,7 +341,7 @@ def settings_button(update, context):
             query.message.edit_text(excp.message)
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
 
-
+@asyncio
 @run_async
 def get_settings(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
