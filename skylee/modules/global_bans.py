@@ -353,7 +353,7 @@ GKICK_ERRORS = {
 @run_async
 def gkick(update, context):
     message = update.effective_message
-    user_id = extract_user(message, args)
+    args = context.args
     try:
         user_chat = bot.get_chat(user_id)
     except BadRequest as excp:
