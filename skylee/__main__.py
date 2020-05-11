@@ -147,7 +147,7 @@ def start(update, context):
         else:
             update.effective_message.reply_text(PM_START_TEXT, reply_markup=InlineKeyboardMarkup(buttons), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
-        context.bot.sendMessage(chat.id, "Excuse me, is your name {}? Because you look like a hot-tea!".format(mention_html(user.first_name)), parse_mode=ParseMode.HTML)
+        update.effective_message.reply_text("Control Mario with just a tap!")
         
 
 # for test purposes
