@@ -332,71 +332,6 @@ def gbanstat(update, context):
                                             "When False, they won't, leaving you at the possible mercy of "
                                             "spammers.".format(sql.does_chat_gban(update.effective_chat.id)))
 
-#Gkick
-
-GKICK_ERRORS = {
-    "User is an administrator of the chat",
-    "Chat not found",
-    "Not enough rights to restrict/unrestrict chat member",
-    "User_not_participant",
-    "Peer_id_invalid",
-    "Group chat was deactivated",
-    "Need to be inviter of a user to kick it from a basic group",
-    "Chat_admin_required",
-    "Only the creator of a basic group can kick group administrators",
-    "Channel_private",
-    "Not in the chat",
-    "Method is available for supergroup and channel chats only",
-    "Reply message not found"
-}
-
-@run_async
-def gkick(update, context):
-    message = update.effective_message
-    args = context.args
-    try:
-        user_id, reason = extract_user_and_text(message, args)
-    except BadRequest as excp:
-        if excp.message in GKICK_ERRORS:
-            pass
-        else:
-            message.reply_text("User cannot be Globally kicked because: {}".format(excp.message))
-            return
-    except TelegramError:
-            pass
-
-    if not user_id:
-        message.reply_text("You do not seems to be referring to a person")
-        return
-    if int(user_id) in SUDO_USERS or int(user_id) in SUPPORT_USERS:
-        message.reply_text("OHHH! Someone's trying to gkick a sudo/support user! *Grabs popcorn*")
-        return
-    if int(user_id) == OWNER_ID:
-        message.reply_text("Wow! Some's trying to gkick my owner! *Grabs Potato Chips*")
-        return
-        
-    if user_id == bot.id:
-        message.reply_text("Well, I'm not gonna gkick myself!")
-        return
-
-    if int(user_id) in SUDO_USERS:
-        message.reply_text("")
-        return
-
-    chats = get_all_chats()
-    message.reply_text("Globally Kicking Person @{}".format(user_chat.username))
-    for chat in chats:
-        try:
-            bot.unban_chat_member(chat.chat_id, user_id)  # Unban_member = kick (and not ban)
-        except BadRequest as excp:
-            if excp.message in GKICK_ERRORS:
-                pass
-            else:
-                message.reply_text("Person cannot be Globally kicked because: {}".format(excp.message))
-                return
-        except TelegramError:
-            pass
-
 
 def __stats__():
     return "× {} gbanned users.".format(sql.num_gbanned_users())
@@ -444,9 +379,7 @@ UNGBAN_HANDLER = CommandHandler("ungban", ungban, pass_args=True,
                                 filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 GBAN_LIST = CommandHandler("gbanlist", gbanlist,
                            filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
-GKICK_HANDLER = CommandHandler("gkick", gkick, pass_args=True,
-                              filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
-                              
+
 GBAN_STATUS = CommandHandler("antispam", gbanstat, pass_args=True, filters=Filters.group)
 
 GBAN_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
@@ -455,7 +388,6 @@ dispatcher.add_handler(GBAN_HANDLER)
 dispatcher.add_handler(UNGBAN_HANDLER)
 dispatcher.add_handler(GBAN_LIST)
 dispatcher.add_handler(GBAN_STATUS)
-dispatcher.add_handler(GKICK_HANDLER)
 
 if STRICT_GBAN:  # enforce GBANS if this is set
     dispatcher.add_handler(GBAN_ENFORCER, GBAN_ENFORCE_GROUP)
