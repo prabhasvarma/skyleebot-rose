@@ -23,7 +23,7 @@ from skylee.modules.helper_funcs.alternate import typing_action
 PM_START_TEXT = f"""
 Hey there! my name is *{dispatcher.bot.first_name}*. If you have any questions on how to use me, Click Help button.
 
-Click Help button to find out more about how to use me to my full potential.
+Click Help button to find TEST LINE out more about how to use me to my full potential.
 
 Join SuperMairo Group [SuperMarioSupport](http://t.me/SupermarioSupport) ( @SuperMairoUpdates ) if you need any support or help.
 
